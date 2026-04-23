@@ -1,0 +1,131 @@
+{
+  "project": "Dragon Hatchling (BDH) for Remote Sensing Image Classification",
+  "institution": "Indian Institute of Information Technology, Allahabad",
+  "degree": "B.Tech 6th Semester Major Project",
+  "year": 2025,
+  "paper_ref": {
+    "title": "The Dragon Hatchling: The Missing Link Between the Transformer and Models of the Brain",
+    "authors": "Kosowski et al.",
+    "arxiv": "arXiv:2509.26507",
+    "note": "Original paper covers language modelling. This work independently extends the architecture to satellite remote sensing (vision domain)."
+  },
+  "dataset": {
+    "name": "EuroSAT (Sentinel-2 RGB)",
+    "classes": [
+      "AnnualCrop",
+      "Forest",
+      "HerbaceousVegetation",
+      "Highway",
+      "Industrial",
+      "Pasture",
+      "PermanentCrop",
+      "Residential",
+      "River",
+      "SeaLake"
+    ],
+    "total": 27000,
+    "split": {
+      "train": 20250,
+      "val": 4050,
+      "test": 2700
+    }
+  },
+  "architecture": {
+    "name": "BDHVision",
+    "params": 2453770,
+    "img_size": 64,
+    "patch_size": 8,
+    "d": 256,
+    "depth": 6,
+    "heads": 4,
+    "components": [
+      "8\u00d78 patchification \u2192 linear projection",
+      "Sinusoidal positional encoding",
+      "ReLU-LowRank FFN (~5% sparsity)",
+      "Hebbian Linear Attention (synaptic \u03c1)",
+      "CLS token \u2192 MLP classification head"
+    ]
+  },
+  "results": {
+    "test_acc": 92.0741,
+    "f1_macro": 91.8686,
+    "f1_weighted": 92.0781,
+    "precision": 91.7522,
+    "recall": 92.1184,
+    "inf_ms_img": 0.5785
+  },
+  "baselines": {
+    "SimpleCNN": {
+      "acc": 94.2963,
+      "f1_mac": 94.1197,
+      "params": 4293642
+    },
+    "ResNet-18": {
+      "acc": 90.6296,
+      "f1_mac": 90.4139,
+      "params": 11181642
+    },
+    "ViT-Baseline": {
+      "acc": 91.4815,
+      "f1_mac": 91.3388,
+      "params": 4840458
+    },
+    "BDH (Ours)": {
+      "acc": 92.0741,
+      "f1_mac": 91.8686,
+      "params": 2453770
+    }
+  },
+  "ablations": {
+    "BDH Full (Baseline)": {
+      "acc": 90.8519,
+      "f1_mac": 90.6158,
+      "drop": 0.0
+    },
+    "No Sparse ReLU (GELU)": {
+      "acc": 88.2593,
+      "f1_mac": 88.0149,
+      "drop": 2.5926
+    },
+    "No Hebbian Memory (\u03c1)": {
+      "acc": 89.4444,
+      "f1_mac": 89.2407,
+      "drop": 1.4074
+    },
+    "No Positional Encoding": {
+      "acc": 92.0,
+      "f1_mac": 91.878,
+      "drop": -1.1481
+    },
+    "Half Depth (3 layers)": {
+      "acc": 88.3704,
+      "f1_mac": 88.1054,
+      "drop": 2.4815
+    },
+    "Half Dim (d=128)": {
+      "acc": 87.2222,
+      "f1_mac": 86.9673,
+      "drop": 3.6296
+    },
+    "No LayerNorm": {
+      "acc": 91.4815,
+      "f1_mac": 91.2387,
+      "drop": -0.6296
+    },
+    "Single Head (heads=1)": {
+      "acc": 83.1111,
+      "f1_mac": 82.5304,
+      "drop": 7.7407
+    }
+  },
+  "training": {
+    "epochs": 40,
+    "batch_size": 64,
+    "optimizer": "AdamW",
+    "lr": 0.0003,
+    "weight_decay": 0.05,
+    "schedule": "Cosine Annealing + 5-epoch linear warmup",
+    "label_smoothing": 0.1,
+    "grad_clip": 1.0
+  }
+}
