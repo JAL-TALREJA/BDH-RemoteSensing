@@ -171,9 +171,9 @@ Input Image (64×64×3)
 ## 🗂️ Repository Structure
 
 ```
-BDH-RemoteSensing-IIITA/
+BDH-RemoteSensing/
 │
-├── 📓 BDH_RemoteSensing_IIITA_Final__1_.ipynb   ← Main notebook
+├── 📓 BDH_RemoteSensing.ipynb   ← Main notebook
 ├── 📄 README.md
 ├── 📄 LICENSE
 │
@@ -202,17 +202,17 @@ BDH-RemoteSensing-IIITA/
 
 1. `Runtime → Change runtime type → T4 GPU → Save`
 2. `Runtime → Run all` &nbsp;(or `Ctrl+F9`)
-3. Everything installs and runs automatically — total time ~40–50 min
+3. Everything installs and runs automatically — total time ~2 hours
 
 ### 💻 Run Locally
 
 ```bash
-git clone https://github.com/JAL-TALREJA/BDH-RemoteSensing-IIITA.git
-cd BDH-RemoteSensing-IIITA
+git clone https://github.com/JAL-TALREJA/BDH-RemoteSensing.git
+cd BDH-RemoteSensing
 
 pip install torch torchvision einops timm matplotlib seaborn scikit-learn tqdm grad-cam
 
-jupyter notebook BDH_RemoteSensing_IIITA_Final__1_.ipynb
+jupyter notebook BDH_RemoteSensing.ipynb
 ```
 
 ---
@@ -291,9 +291,6 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
-<div align="center">
-
-*IIIT Allahabad · 2025*
 
 **⭐ If this work is useful, please star the repository!**
 
