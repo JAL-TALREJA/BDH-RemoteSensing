@@ -1,7 +1,3 @@
-<div align="center">
-
-<img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e8/IIIT_Allahabad_Logo.svg/200px-IIIT_Allahabad_Logo.svg.png" width="100"/>
-
 # 🐉 Dragon Hatchling (BDH) for Remote Sensing Image Classification
 
 ### A Biologically-Inspired Vision Architecture on EuroSAT Sentinel-2 Imagery
@@ -10,7 +6,6 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-EE4C2C?logo=pytorch)](https://pytorch.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Institution](https://img.shields.io/badge/IIIT-Allahabad-8B0000)](https://www.iiita.ac.in/)
 [![Dataset: EuroSAT](https://img.shields.io/badge/Dataset-EuroSAT-2ea44f)](https://github.com/phelber/EuroSAT)
 [![arXiv](https://img.shields.io/badge/arXiv-2509.26507-b31b1b)](https://arxiv.org/abs/2509.26507)
 
